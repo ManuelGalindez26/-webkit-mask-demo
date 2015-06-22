@@ -13,13 +13,14 @@ html {
 }
 
 h1 {
+	
+}
+
+#universe {
 	font-family: Chango, sans-serif;
 	text-transform: uppercase;
 	color: black;
 	text-align: center;
-}
-
-#universe {
 	background: url('universe.jpg') no-repeat center center;
 	color: #fff;
 	-webkit-text-fill-color: transparent;
