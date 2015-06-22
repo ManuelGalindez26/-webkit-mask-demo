@@ -12,5 +12,19 @@ html {
 	-webkit-mask-attachment: fixed;			
 }
 
+h1 {
+	font-family: Chango, sans-serif;
+	text-transform: uppercase;
+	color: black;
+	text-align: center;
+}
+
+#universe {
+	background: url('universe.jpg') no-repeat center center;
+	color: #fff;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+
 
 
