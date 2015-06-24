@@ -12,5 +12,21 @@ html {
 	-webkit-mask-attachment: fixed;			
 }
 
+<<<<<<< HEAD
+=======
+#universe {
+	font-family: Chango, sans-serif;
+	text-transform: uppercase;
+	color: black;
+	text-align: center;
+	background: url('universe.jpg');
+	background-repeat: no-repeat;
+	background-position: center, center;
+	color: #fff;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+
+>>>>>>> 8a6d5e6f9e435473f15a708f6bbd5e960c562fbb
 
 
