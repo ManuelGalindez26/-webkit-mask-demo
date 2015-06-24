@@ -1,2 +1,143 @@
 Dale textura a tus textos con CSS3
 
+(gif-demo)
+
+Con la propiedad -webkit-mask podemos realizar un efecto similar a las máscaras de recorte de Photoshop e Illustrator: con dos imágenes, una se vuelve la textura de la otra; esto se vuelve interesante si usamos PNGs, GIFs o SVGs, que soportan transparencias.
+
+Para este demo, que se encuentra live aquí (http://zuraguerra.github.io/-webkit-mask-demo/), usé el logo de Platzi y una escena de Steven Universe (http://www.imdb.com/title/tt3061046/) en GIF.
+
+Inicialmente, nuestro HTML se ve así:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="main.css">
+	</head>
+	<body>
+		<center>
+			<img  id="platzi" src="steven.gif">
+		</center>
+	</body>
+</html>
+
+El único contenido es la imagen steven.gif con el id platzi.
+
+(gif-steven)
+
+El id platzi contiene estas propiedas en nuestro CSS:
+
+#platzi {
+	width: 60%;
+	height: 60%;
+	-webkit-mask-image: url('platzi.png');
+	-webkit-mask-position: center, center;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: 100%;
+	-webkit-mask-attachment: fixed;			
+}
+
+width: Define el ancho de un elemento.
+height: Define su altura.
+
+-webkit-mask-image: Con esta propiedad especificamos la ruta de la imagen que queremos usar como máscara.
+-webkit-mask-position: Se refiere a la posición de la máscara con respecto a la de la imagen de abajo. Aquí, por ejemplo, center, center, las alinea por el centro.
+-webkit-mask-repeat: Por defecto, el navegador crea un mosaico de la máscara. Con no-repeat evitamos eso.
+-webkit-mask-size: Controla el tamaño de la máscara con respecto a la imagen de abajo. Con 100% obtenemos un fit perfecto.
+-webkit-mask-attachment: Esto define el comportamiento al hacer scroll.
+
+Después agregué un encabezado con texto y también le puse una imagen de textura. Aquí la lógica se invierte: lo que agregamos en el CSS es la textura y la máscara de recorte es el texto que ponemos en el HTML.
+
+Justo después de donde comienza <body>, añadí este <div>:
+
+<div id="universe">
+	<h1>Demo de -webkit-mask para</h1>
+</div>
+
+(foto-universe)
+
+Nuestro CSS para el id universe se ve así:
+
+#universe {
+	background: url('universe.jpg');
+	background-repeat: no-repeat;
+	background-position: center, center;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+
+background: Aquí ponemos la ruta a la imagen que usaremos de textura.
+background-repeat: Igual que arriba, espara que no cree un mosaico por defecto.
+background-position: También como arriba, define la posición de la textura con respecto a la de su contenedor (que en este caso es el div, no el h1).
+-webkit-text-fill-color: Funciona igual que color (especifica un color para la fuente), pero nos permite usar transparent como valor.
+-webkit-background-clip: Como su valor es text, entiende que esa va a ser su máscara de recorte.
+
+EXTRAS
+
+Google Fonts
+Quería una fuente suficientemente gruesa como para que se apreciaran las estrellitas del fondo. Encontré una en Google Fonts.
+
+En el HTML, agregué esto justo debajo de donde agrego la hoja de estilo, en <head>:
+
+<link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
+
+En el CSS estilicé más el texto:
+
+#universe {
+	font-family: Chango, sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+text-transform: Transforma el texto según parámetros como uppercase (todas mayúsculas), lowercase (todas minúsculas) o capitalize (cada palabra empieza en mayúscula).
+text-align: Alinea el texto.
+
+(foto-texto)
+
+Al final, nuestro HTML quedó así:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div id="universe">
+			<h1>Demo de -webkit-mask para</h1>
+		</div>
+		<center>
+			<img  id="platzi" src="steven.gif">
+		</center>
+	</body>
+</html>
+
+Y el CSS así:
+
+html {
+	background-color: #fff4f5;
+}
+
+#platzi {
+	width: 60%;
+	height: 60%;
+	-webkit-mask-position: center, center;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: 100%;
+	-webkit-mask-image: url('platzi.png');
+	-webkit-mask-attachment: fixed;			
+}
+
+#universe {
+	font-family: Chango, sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	background: url('universe.jpg');
+	background-repeat: no-repeat;
+	background-position: center, center;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+
+En Github (https://github.com/ZuraGuerra/-webkit-mask-demo) pueden encontrar el código del demo (http://zuraguerra.github.io/-webkit-mask-demo/). Si tienen alguna duda implementándolo, no duden en preguntarme por twitter o comentando acá abajo.
+
+
